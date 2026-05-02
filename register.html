@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NxtWatch - Sign Up</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/auth.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="auth-screen">
+        <div class="auth-card">
+            <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()">☀️</button>
+            <h2>Create Account</h2>
+            <p class="auth-subtitle">Join NxtWatch today.</p>
+
+            <form id="registerForm" onsubmit="event.preventDefault(); handleRegister()">
+                <div class="field-group">
+                    <label class="field-label">FULL NAME</label>
+                    <input type="text" id="fullname" placeholder="John Doe" required>
+                </div>
+                <div class="field-group">
+                    <label class="field-label">EMAIL ADDRESS</label>
+                    <input type="email" id="regEmail" placeholder="name@example.com" required>
+                </div>
+                <div class="field-group">
+                    <label class="field-label">PASSWORD</label>
+                    <input type="password" id="regPassword" placeholder="Create a strong password" required>
+                </div>
+                <div class="field-group">
+                    <label class="field-label">CONFIRM PASSWORD</label>
+                    <input type="password" id="confirmPassword" placeholder="Repeat your password" required>
+                </div>
+                <div class="field-group">
+                    <label class="field-label">DATE OF BIRTH</label>
+                    <input type="date" id="dob">
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn-main">Register</button>
+                    <button type="reset" class="btn-reset" onclick="document.getElementById('registerForm').reset()">Clear</button>
+                </div>
+            </form>
+
+            <p class="auth-footer-text">Already have an account? <a href="login.html" class="signup-link">Sign in here</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-center">
+                <h3>NXTWATCH</h3>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/core.js"></script>
+    <script>
+        if (!localStorage.getItem('users')) {
+            localStorage.setItem('users', JSON.stringify([]));
+        }
+
+        function handleRegister() {
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const confirm = document.getElementById('confirmPassword').value;
+            const dob = document.getElementById('dob').value;
+
+            if (!fullname || !email || !password || !confirm) {
+                alert("Please fill in all fields.");
+                return;
+            }
+            if (password !== confirm) {
+                alert("Passwords do not match.");
+                return;
+            }
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters.");
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('users'));
+            if (users.some(user => user.email === email)) {
+                alert("This email is already registered. Please sign in.");
+                return;
+            }
+
+            users.push({
+                fullname: fullname,
+                email: email,
+                password: password,
+                dob: dob || "",
+                watchlist: []
+            });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert("Registration successful! Please sign in.");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

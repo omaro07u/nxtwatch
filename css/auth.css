@@ -1,0 +1,64 @@
+/* ===== AUTH ===== */
+.auth-screen {
+    flex: 1; display: flex;
+    justify-content: center; align-items: center;
+    padding: 60px 20px; min-height: 100vh;
+}
+.auth-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 44px;
+    width: 100%; max-width: 440px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    position: relative;
+}
+.auth-card h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px; letter-spacing: 2px;
+    margin: 0 0 6px; text-align: center;
+}
+.auth-subtitle { color: var(--muted); text-align: center; margin-bottom: 30px; font-size: 14px; }
+.field-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.field-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.field-label-row { display: flex; justify-content: space-between; align-items: center; }
+.forgot-link { color: var(--red); font-size: 12px; text-decoration: none; }
+.forgot-link:hover { text-decoration: underline; }
+.btn-main {
+    background: var(--red); color: white; border: none;
+    border-radius: 8px; padding: 13px 24px;
+    font-size: 15px; font-weight: 600; cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+}
+.btn-main:hover { background: #c0070f; transform: translateY(-1px); }
+.btn-reset {
+    background: var(--btn-reset); color: var(--text); border: none;
+    border-radius: 8px; padding: 13px 24px;
+    font-size: 15px; font-weight: 500; cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: background 0.2s;
+}
+.btn-reset:hover { background: #2a2a3e; }
+.button-group { display: flex; gap: 12px; margin-top: 4px; }
+.button-group .btn-main, .button-group .btn-reset { flex: 1; }
+.divider { display: flex; align-items: center; gap: 12px; margin: 24px 0; color: var(--muted); font-size: 11px; letter-spacing: 1px; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.social-btns { display: flex; gap: 10px; margin-bottom: 20px; }
+.btn-social {
+    flex: 1; background: transparent; border: 1px solid var(--border);
+    color: var(--text); padding: 10px; border-radius: 8px;
+    cursor: pointer; transition: all 0.2s; font-family: 'Outfit', sans-serif; font-size: 14px;
+}
+.btn-social:hover { border-color: var(--red); background: var(--red-dim); }
+.auth-footer-text { text-align: center; margin-top: 24px; font-size: 13px; color: var(--muted); }
+.signup-link { color: var(--red); text-decoration: none; font-weight: 600; }
+.signup-link:hover { text-decoration: underline; }
+
+/* Auth-specific theme toggle */
+.theme-toggle-btn {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: none; border: none;
+    font-size: 22px; cursor: pointer;
+    color: var(--text);
+    z-index: 1;
+}

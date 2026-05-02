@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NxtWatch - Sign In</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/auth.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="auth-screen">
+        <div class="auth-card">
+            <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()">☀️</button>
+            <h2>Welcome Back</h2>
+            <p class="auth-subtitle">Continue your cinematic journey.</p>
+
+            <div class="field-group">
+                <label class="field-label">EMAIL ADDRESS</label>
+                <input type="email" id="loginEmail" placeholder="name@example.com" required>
+            </div>
+
+            <div class="field-group">
+                <div class="field-label-row">
+                    <label class="field-label">PASSWORD</label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+            </div>
+
+            <button class="btn-main" onclick="handleLogin()" style="width: 100%; margin-top: 8px;">Sign In</button>
+
+
+            <p class="auth-footer-text">Don't have an account? <a href="register.html" class="signup-link">Sign Up</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-center">
+                <h3>NXTWATCH</h3>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/core.js"></script>
+    <script>
+        if (!localStorage.getItem('users')) {
+            localStorage.setItem('users', JSON.stringify([]));
+        }
+
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users'));
+            const foundUser = users.find(user => user.email === email && user.password === password);
+
+            if (foundUser) {
+                localStorage.setItem('currentUser', JSON.stringify({
+                    email: foundUser.email,
+                    fullname: foundUser.fullname
+                }));
+                alert(`Welcome back, ${foundUser.fullname}!`);
+                window.location.href = "index.html";
+            } else {
+                alert("Invalid email or password. Please try again or sign up.");
+            }
+        }
+    </script>
+</body>
+</html>

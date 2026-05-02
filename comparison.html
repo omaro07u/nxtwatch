@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NxtWatch - Comparison</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/comparison.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">NXT<span>WATCH</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Main</a></li>
+            <li><a href="comparison.html" class="active">Comparison</a></li>
+            <li><a href="watchlist.html">Watchlist</a></li>
+            <li><a href="account.html">Account</a></li>
+        </ul>
+        <div class="navbar-right">
+            <div id="userArea"></div>
+            <button class="theme-toggle-nav" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <main style="padding: 60px 5%; text-align: center;">
+        <h1 style="font-family: 'Bebas Neue', sans-serif; font-size: 52px; letter-spacing: 3px; margin: 0 0 10px;">COMPARISON</h1>
+        <p class="subtitle">Compare between movies to find your next watch.</p>
+        <div class="search-bar">
+            <div class="input-wrap"><input type="text" id="movieInput1" placeholder="First movie or series" onkeydown="if(event.key==='Enter') startComparison()"></div>
+            <button class="compare-btn" onclick="startComparison()">Compare Now</button>
+            <div class="input-wrap"><input type="text" id="movieInput2" placeholder="Second movie or series" onkeydown="if(event.key==='Enter') startComparison()"></div>
+        </div>
+        <table class="comparison-table">
+            <thead><tr><th>ATTRIBUTE</th><td id="poster1"><div class="poster-placeholder">?</div></td><td id="poster2"><div class="poster-placeholder">?</div></td></tr>
+            <tr><th>Title</th><td id="title1" class="movie-name">-</td><td id="title2" class="movie-name">-</td></tr></thead>
+            <tbody>
+                <tr><th>Year</th><td id="year1">-</td><td id="year2">-</td></tr>
+                <tr><th>Runtime</th><td id="time1">-</td><td id="time2">-</td></tr>
+                <tr><th>Starring</th><td id="cast1">-</td><td id="cast2">-</td></tr>
+            </tbody>
+        <tr>
+    <th>IMDb Rating</th>
+    <td id="imdb1">-</td>
+    <td id="imdb2">-</td>
+</tr>
+<tr>
+    <th>Rotten Tomatoes</th>
+    <td id="rotten1">-</td>
+    <td id="rotten2">-</td>
+</tr>
+<tr>
+    <th>Metacritic</th>
+    <td id="meta1">-</td>
+    <td id="meta2">-</td>
+</tr>
+        </table>
+    </main>
+
+    <script src="js/core.js"></script>
+    <script src="js/compare.js"></script>
+</body>
+</html>

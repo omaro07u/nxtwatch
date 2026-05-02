@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NxtWatch - My Account</title>
+    <link rel="stylesheet" href="css/base.css">
+     <link rel="stylesheet" href="css/account.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">NXT<span>WATCH</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Main</a></li>
+            <li><a href="comparison.html">Comparison</a></li>
+            <li><a href="watchlist.html">Watchlist</a></li>
+            <li><a href="account.html" class="active">Account</a></li>
+        </ul>
+        <div class="navbar-right">
+            <div id="userArea"></div>
+            <button class="theme-toggle-nav" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <div class="account-container">
+        <div class="profile-header" id="profileHeader"></div>
+        <div class="stats-row" id="statsRow" style="justify-content: center;"></div>
+
+        <section class="my-watchlist-section">
+            <div class="section-header">
+                <h2>My Watchlist</h2>
+                <a href="watchlist.html">Manage →</a>
+            </div>
+            <div id="watchlistAccountGrid" class="watchlist-grid"></div>
+        </section>
+
+        <section class="settings-section">
+            <h2>Account Settings</h2>
+            <div class="settings-form">
+                <div class="form-group">
+                    <label>FULL NAME</label>
+                    <input type="text" id="accountFullName">
+                </div>
+                <div class="form-group">
+                    <label>EMAIL ADDRESS</label>
+                    <input type="email" id="accountEmail">
+                </div>
+                <button class="save-btn" id="saveAccountBtn">Save Changes</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script>
+        function getWatchlist() {
+            return JSON.parse(localStorage.getItem('watchlist') || '[]');
+        }
+        function loadAccountPage() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                window.location.href = "login.html";
+                return;
+            }
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userData = users.find(u => u.email === currentUser.email);
+            if (!userData) {
+                alert("User data error. Please log in again.");
+                localStorage.removeItem('currentUser');
+                window.location.href = "login.html";
+                return;
+            }
+            const firstName = userData.fullname.split(' ')[0];
+            const initial = firstName.charAt(0).toUpperCase();
+            document.getElementById('profileHeader').innerHTML = `
+                <div class="profile-avatar"><div class="avatar-large">${initial}</div></div>
+                <div class="profile-info"><h1>${userData.fullname}</h1><p>${userData.email}</p></div>
+            `;
+            const watchlistCount = getWatchlist().length;
+            document.getElementById('statsRow').innerHTML = `
+                <div class="stat-card single-stat"><span> My Watchlist</span><strong>${watchlistCount}</strong><p>movies saved</p></div>
+            `;
+            const watchlist = getWatchlist();
+            const watchlistGrid = document.getElementById('watchlistAccountGrid');
+            if (watchlist.length === 0) {
+                watchlistGrid.innerHTML = '<p class="empty-watchlist">Your watchlist is empty. Add movies from the <a href="home.html">home page</a>.</p>';
+            } else {
+                watchlistGrid.innerHTML = '';
+                watchlist.slice(0, 6).forEach(movie => {
+                    const card = document.createElement('div');
+                    card.className = 'watchlist-card';
+                    card.onclick = () => window.location.href = `details.html?id=${movie.imdbID}`;
+                    card.innerHTML = `
+                        <img src="${movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/160x240?text=No+Poster'}" alt="${movie.Title}">
+                        <div class="watchlist-card-info"><h4>${movie.Title}</h4><p>${movie.Year}</p></div>
+                    `;
+                    watchlistGrid.appendChild(card);
+                });
+                if (watchlist.length > 6) {
+                    const moreLink = document.createElement('div');
+                    moreLink.className = 'more-link';
+                    moreLink.innerHTML = '<a href="watchlist.html">+ see all ' + watchlist.length + ' movies →</a>';
+                    watchlistGrid.appendChild(moreLink);
+                }
+            }
+            document.getElementById('accountFullName').value = userData.fullname;
+            document.getElementById('accountEmail').value = userData.email;
+        }
+        function updateProfile() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) return;
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const index = users.findIndex(u => u.email === currentUser.email);
+            if (index !== -1) {
+                users[index].fullname = document.getElementById('accountFullName').value.trim();
+                users[index].email = document.getElementById('accountEmail').value.trim();
+                localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('currentUser', JSON.stringify({ email: users[index].email, fullname: users[index].fullname }));
+                alert('Profile updated successfully!');
+                loadAccountPage();
+            } else {
+                alert('User not found in database.');
+            }
+        }
+        document.getElementById('saveAccountBtn').addEventListener('click', updateProfile);
+        loadAccountPage();
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NxtWatch - Search</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">NXT<span>WATCH</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Main</a></li>
+            <li><a href="comparison.html">Comparison</a></li>
+            <li><a href="watchlist.html">Watchlist</a></li>
+            <li><a href="account.html">Account</a></li>
+        </ul>
+        <div class="navbar-right">
+            <div id="userArea"></div>
+            <button class="theme-toggle-nav" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <h1>Find Your Next Watch</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for movies..." onkeydown="if(event.key==='Enter') searchMovies()">
+            <button onclick="searchMovies()" class="search-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <section class="suggested-section">
+        <h2 class="section-title">Suggested For You</h2>
+        <div id="suggestedGrid" class="movie-grid"></div>
+    </section>
+
+    <main id="movieGrid" class="movie-grid" style="display: none;"></main>
+
+    <script src="core.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>

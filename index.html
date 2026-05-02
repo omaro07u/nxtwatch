@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>NxtWatch - Stream｜Compare｜Watchlist</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- شريط التنقل القياسي الموحد -->
+    <nav class="navbar">
+        <div class="logo">NXT<span>WATCH</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="comparison.html">Comparison</a></li>
+            <li><a href="watchlist.html">Watchlist</a></li>
+            <li><a href="account.html">Account</a></li>
+
+        </ul>
+        <div class="navbar-right">
+            <div id="userArea"></div>
+            <button class="theme-toggle-nav" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <!-- قسم الهيرو (يأتي بعد الشريط) -->
+   <!-- قسم الهيرو (يأتي بعد الشريط) -->
+<header class="hero-section-home">
+    <video autoplay loop muted playsinline class="hero-video-bg">
+        <!-- تريلر سينمائي HD من نفس السيرفر المضمون -->
+        <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+    </video>
+    
+    <div class="hero-video-overlay"></div>
+
+    <div class="hero-content">
+        <h1 class="mega-title">NXTWATCH</h1>
+        <div class="search-box-hero">
+            <input type="text" id="globalSearchInput" placeholder="Search for movies...">
+            <button id="heroSearchBtn">SEARCH</button>
+        </div>
+    </div>
+</header>
+    <section class="suggested-section">
+        <h2 class="section-title"> Recommended for you</h2>
+        <div id="suggestedGrid" class="movie-grid"></div>
+    </section>
+
+    <main>
+        <div id="searchResultsArea" style="display: none;">
+            <h2 class="section-title" id="searchResultTitle">loading results</h2>
+            <div id="movieGrid" class="movie-grid"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 NxtWatch — cinematic experience powered by OMDb</p>
+    </footer>
+
+    <script src="js/core.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

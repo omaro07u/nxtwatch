@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NxtWatch - Watchlist</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">NXT<span>WATCH</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Main</a></li>
+            <li><a href="comparison.html">Comparison</a></li>
+            <li><a href="watchlist.html" class="active">Watchlist</a></li>
+            <li><a href="account.html">Account</a></li>
+        </ul>
+        <div class="navbar-right">
+            <div id="userArea"></div>
+            <button class="theme-toggle-nav" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <h1>My Watchlist</h1>
+        <div class="search-container">
+            <input type="text" id="watchInput" placeholder="Add a movie or series..." onkeydown="if(event.key==='Enter') addToWatchlist()">
+            <button onclick="addToWatchlist()" class="search-btn">➕</button>
+        </div>
+    </header>
+
+    <section class="watchlist-section" style="padding: 10px 5% 40px;">
+        <h2 class="section-title">Saved (<span id="count">0</span>)</h2>
+        <div id="watchlistGrid" class="movie-grid"></div>
+        <p id="emptyMsg" class="empty-msg">Your watchlist is empty. Start adding movies!</p>
+    </section>
+
+    <script src="js/core.js"></script>
+    <script src="js/watchlist.js"></script>
+    <script src="js/details.js"></script>
+</body>
+</html>

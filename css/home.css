@@ -1,0 +1,160 @@
+/* ===== HOME HERO SPECIFIC ===== */
+.hero-section-home {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+    background: transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    filter: brightness(0.4);
+}
+
+.hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+}
+
+.mega-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 5.5rem); 
+    background: linear-gradient(135deg, #FFFFFF 70%, #ff9ea2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 10px 30px rgba(255, 255, 255, 0); 
+    letter-spacing: 7px;
+    filter: drop-shadow(0 0 10px rgb(98, 0, 0));
+    
+    /* الكود الموجود عندك */
+    display: inline-block; /* ضيف السطر ده عشان يستجيب للتحريك */
+    transform: translateX(25px); /* زود الرقم ده زي ما تحب لحد ما تروح يمين */
+    transition: transform 0.3s ease;
+    
+}
+
+.hero-tagline {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+    font-weight: 600;
+}
+
+/* عدل الـ search-box-hero عشان تشيل الإطار الخارجي اللي باين كأنه صندوق */
+.search-box-hero {
+    max-width: 580px;
+    margin: 0 auto;
+    /* غيرنا الـ background والـ border هنا */
+    background: transparent; 
+    backdrop-filter: none; 
+    border-radius: 15px;
+    border: none; /* شيلنا الـ border اللي كان عامل الشكل المربع */
+    display: flex;
+    align-items: center;
+    padding: 0.5rem; 
+    transition: all 0.7s ease;
+}
+
+/* لو عايز يفضل فيه تحديد بس لما تضغط جواه (Focus) */
+.search-box-hero:focus-within {
+    border-color: transparent; 
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: none; 
+    transform: translateY(-2px);
+}
+
+/* تعديل الـ input عشان نضمن إنه واخد المساحة صح */
+.search-box-hero input {
+    background: rgba(255, 255, 255, 0.05); /* خلينا الخلفية هنا بدل الـ container */
+    border: 1px solid rgba(255,255,255,0.1); /* إطار خفيف جداً لو تحب */
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Outfit', sans-serif;
+    padding: 0.8rem 1.2rem; /* زودنا الـ padding عشان الشكل يبقى أنضف */
+    width: 100%;
+    outline: none;
+    transition: 0.5s;
+}
+
+.search-box-hero input:focus {
+    border-color: var(--red);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+.search-box-hero button {
+    background: var(--red);
+    border: none;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-left: 10px;
+}
+
+.search-box-hero button:hover {
+    background: #ff0a16;
+    box-shadow: 0 4px 12px rgba(229,9,20,0.4);
+}
+
+/* ===== LIGHT MODE OVERRIDES ===== */
+body.light-mode .hero-video-overlay {
+    background: linear-gradient(to bottom, transparent, rgba(240,242,255,0.6));
+}
+
+body.light-mode .hero-video-bg {
+    filter: brightness(0.7) saturate(0.9);
+}
+
+body.light-mode .search-box-hero input {
+    background: rgba(255,255,255,0.25);
+    border-color: rgba(92,110,248,0.25);
+    color: #1a1a2e;
+}
+
+body.light-mode .search-box-hero input::placeholder {
+    color: rgba(26,26,46,0.45);
+}
+
+body.light-mode .search-box-hero input:focus {
+    border-color: #5c6ef8;
+    background: rgba(255,255,255,0.35);
+}
+
+body.light-mode .search-box-hero button {
+    background: linear-gradient(135deg, #5c6ef8, #8b5cf6);
+    box-shadow: 0 4px 16px rgba(92,110,248,0.35);
+}
+
+body.light-mode .search-box-hero button:hover {
+    background: linear-gradient(135deg, #4a5be8, #7c4de6);
+    box-shadow: 0 6px 20px rgba(92,110,248,0.45);
+}
+
+body.light-mode .mega-title {
+    background: linear-gradient(135deg, #1a1a2e 60%, #5c6ef8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(92,110,248,0.3));
+}

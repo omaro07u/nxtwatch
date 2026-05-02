@@ -1,0 +1,65 @@
+/* ===== ACCOUNT ===== */
+.account-container { max-width: 900px; margin: 0 auto; padding: 40px 5%; }
+.profile-header {
+    display: flex; align-items: center; gap: 24px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 30px; margin-bottom: 24px;
+}
+.avatar-large {
+    width: 80px; height: 80px;
+    background: var(--red); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; font-weight: 700; color: white;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 4px rgba(229,9,20,0.2);
+}
+.profile-info h1 { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 1px; margin-bottom: 4px; }
+.profile-info p { color: var(--muted); font-size: 14px; }
+.stats-row { display: flex; gap: 16px; margin-bottom: 30px; flex-wrap: wrap; }
+.stat-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 22px 28px;
+    text-align: center; flex: 1;
+    transition: border-color 0.2s, transform 0.2s;
+}
+.stat-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+.stat-card span { color: var(--muted); font-size: 13px; display: block; margin-bottom: 8px; }
+.stat-card strong { font-size: 36px; font-family: 'Bebas Neue', sans-serif; color: var(--red); display: block; }
+.stat-card p { color: var(--muted); font-size: 12px; margin-top: 2px; }
+.my-watchlist-section, .settings-section { margin-bottom: 30px; }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.section-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; }
+.section-header a { color: var(--red); text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
+.section-header a:hover { opacity: 0.75; }
+.watchlist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; }
+.watchlist-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden; cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.watchlist-card:hover { transform: translateY(-4px); border-color: var(--border-hover); }
+.watchlist-card img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; }
+.watchlist-card-info { padding: 10px; }
+.watchlist-card-info h4 { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text); margin-bottom: 2px; }
+.watchlist-card-info p { font-size: 11px; color: var(--muted); }
+.empty-watchlist { color: var(--muted); font-size: 14px; }
+.empty-watchlist a { color: var(--red); text-decoration: none; }
+.more-link { text-align: center; padding: 10px; }
+.more-link a { color: var(--red); text-decoration: none; font-size: 13px; }
+.settings-section {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px;
+}
+.settings-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; margin-bottom: 24px; }
+.settings-form { max-width: 440px; display: flex; flex-direction: column; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.save-btn {
+    background: var(--red); color: white;
+    border: none; border-radius: 8px;
+    padding: 12px 24px; font-size: 14px; font-weight: 600;
+    cursor: pointer; font-family: 'Outfit', sans-serif;
+    width: fit-content; margin-top: 4px;
+    transition: background 0.2s, transform 0.15s;
+}
+.save-btn:hover { background: #c0070f; transform: translateY(-1px); }

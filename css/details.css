@@ -1,0 +1,48 @@
+/* ===== DETAILS ===== */
+.details-container {
+    display: flex; gap: 50px;
+    padding: 60px 5%;
+    max-width: 1100px; margin: 0 auto;
+    align-items: flex-start;
+}
+.poster-section { flex-shrink: 0; }
+.poster-section img {
+    width: 280px; border-radius: 12px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+    transition: transform 0.3s;
+}
+.poster-section img:hover { transform: scale(1.02); }
+.info-section { flex: 1; }
+.info-section h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 46px; letter-spacing: 2px; margin-bottom: 10px;
+    line-height: 1.1;
+}
+.meta-data { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+.all-ratings { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.rating-chip {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 13px; color: var(--text);
+    transition: border-color 0.2s;
+}
+.rating-chip:hover { border-color: var(--red); }
+.plot { font-size: 15px; line-height: 1.7; color: #4c4c89; margin-bottom: 28px; }
+.details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.detail-item label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--red); font-weight: 600; display: block; margin-bottom: 6px; }
+.detail-item p { font-size: 14px; color: var(--text); line-height: 1.5; }
+.loader { color: var(--muted); font-size: 15px; }
+
+/* watchlist btn in details */
+.watchlist-action-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--red); color: white;
+    border: none; border-radius: 8px;
+    padding: 11px 22px; font-size: 14px; font-weight: 600;
+    cursor: pointer; margin-top: 20px;
+    font-family: 'Outfit', sans-serif;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.watchlist-action-btn:hover { background: #c0070f; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(229,9,20,0.3); }
+.watchlist-action-btn.added { background: #1a1a2e; border: 1px solid var(--red); color: var(--red); }
+.watchlist-action-btn.added:hover { background: rgba(229,9,20,0.1); }

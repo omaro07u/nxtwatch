@@ -1,0 +1,53 @@
+/* ===== COMPARISON ===== */
+.subtitle { color: var(--muted); font-size: 15px; margin-bottom: 30px; }
+.search-bar {
+    display: flex; align-items: center;
+    gap: 16px; margin-bottom: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.input-wrap {
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+.input-wrap:focus-within {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(229,9,20,0.12);
+}
+.input-wrap input {
+    background: transparent; border: none; outline: none;
+    color: var(--text); font-family: 'Outfit', sans-serif;
+    font-size: 15px; padding: 13px 18px; width: 260px;
+}
+.compare-btn {
+    background: var(--red); color: white;
+    border: none; border-radius: 10px;
+    padding: 13px 28px; font-size: 15px; font-weight: 600;
+    cursor: pointer; font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, transform 0.15s;
+}
+.compare-btn:hover { background: #c0070f; transform: translateY(-1px); }
+.comparison-table {
+    width: 100%; border-collapse: collapse;
+    border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border);
+}
+.comparison-table th, .comparison-table td {
+    padding: 16px 20px; border: 1px solid var(--border);
+    text-align: center; vertical-align: middle;
+    transition: background 0.2s;
+}
+.comparison-table th { background: var(--surface); color: var(--muted); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; text-align: left; width: 130px; }
+.comparison-table td { background: var(--card); color: var(--text); font-size: 15px; }
+.comparison-table tr:hover td { background: var(--surface); }
+.comparison-table .movie-name { font-weight: 700; font-size: 17px; }
+.poster-placeholder {
+    width: 160px; height: 240px;
+    background: var(--surface); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px; color: var(--muted); margin: 0 auto;
+}
+.poster-img { width: 160px; height: 240px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto; }
