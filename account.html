@@ -51,11 +51,18 @@
             </div>
         </section>
     </div>
-
+    
     <script src="js/core.js"></script>
     <script>
+        function getWatchlistKey() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser && currentUser.email) {
+                return 'watchlist_' + currentUser.email;
+            }
+            return 'watchlist_guest';
+        }
         function getWatchlist() {
-            return JSON.parse(localStorage.getItem('watchlist') || '[]');
+            return JSON.parse(localStorage.getItem(getWatchlistKey()) || '[]');
         }
         function loadAccountPage() {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -64,8 +71,8 @@
                 return;
             }
             const users = JSON.parse(localStorage.getItem('users')) || [];
-            const userData = users.find(u => u.email === currentUser.email);
-            if (!userData) {
+            const userData = users.find(u => u.email === currentUser.email) || currentUser;
+            if (!userData || !userData.fullname) {
                 alert("User data error. Please log in again.");
                 localStorage.removeItem('currentUser');
                 window.location.href = "login.html";
@@ -123,8 +130,10 @@
                 alert('User not found in database.');
             }
         }
-        document.getElementById('saveAccountBtn').addEventListener('click', updateProfile);
-        loadAccountPage();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('saveAccountBtn').addEventListener('click', updateProfile);
+            loadAccountPage();
+        });
     </script>
 </body>
 </html>
