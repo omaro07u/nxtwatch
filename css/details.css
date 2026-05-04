@@ -27,7 +27,7 @@
     transition: border-color 0.2s;
 }
 .rating-chip:hover { border-color: var(--red); }
-.plot { font-size: 15px; line-height: 1.7; color: #4c4c89; margin-bottom: 28px; }
+.plot { font-size: 15px; line-height: 1.7; color: var(--text); margin-bottom: 28px; }
 .details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .detail-item label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--red); font-weight: 600; display: block; margin-bottom: 6px; }
 .detail-item p { font-size: 14px; color: var(--text); line-height: 1.5; }
