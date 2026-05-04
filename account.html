@@ -91,7 +91,7 @@
             const watchlist = getWatchlist();
             const watchlistGrid = document.getElementById('watchlistAccountGrid');
             if (watchlist.length === 0) {
-                watchlistGrid.innerHTML = '<p class="empty-watchlist">Your watchlist is empty. Add movies from the <a href="home.html">home page</a>.</p>';
+                watchlistGrid.innerHTML = '<p class="empty-watchlist">Your watchlist is empty. Add movies from the <a href="index.html">home page</a>.</p>';
             } else {
                 watchlistGrid.innerHTML = '';
                 watchlist.slice(0, 6).forEach(movie => {
